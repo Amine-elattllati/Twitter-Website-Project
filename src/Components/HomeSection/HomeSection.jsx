@@ -5,6 +5,7 @@ import *as Yup from 'yup'
 import ImageIcon from '@mui/icons-material/Image';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import TagFacesIcon from '@mui/icons-material/TagFaces';
+import TweetCard from './TweetCard';
 
 const validationSchema = Yup.object().shape({
     content: Yup.string().required("Yweet text is required")
@@ -39,7 +40,7 @@ const HomeSection = () => {
         <div className='space-y-5'>
             <section>
                 <h1 className='py-5 text-xl font-bold opacity-90'>Home</h1>
-            </section>  
+            </section>
             <section className={'pb-10'}>
                 <div className='flex space-x-5'>
                     <Avatar alt='username'
@@ -73,7 +74,7 @@ const HomeSection = () => {
                                     }}
                                         variant='contained'
                                         type='submit'
-                                        >
+                                    >
                                         Tweet
                                     </Button>
                                 </div>
@@ -82,6 +83,9 @@ const HomeSection = () => {
                     </div>
                 </div>
 
+            </section>
+            <section>
+                <TweetCard/>
             </section>
         </div>
     )
