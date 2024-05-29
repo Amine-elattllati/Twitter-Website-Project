@@ -1,9 +1,25 @@
 import React from 'react'
 import RepeatIcon from '@mui/icons-material/Repeat'
-import { Avatar } from '@mui/material'
+import { Avatar, Menu, MenuItem } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+
+
 const TweetCard = () =>{
     const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleDeleteTweet = ()=>{
+        console.log("delete tweet")
+        handleClose();
+    }
     return(
         <div className=''>
 
@@ -24,6 +40,28 @@ const TweetCard = () =>{
                             <span className='font-semibold'>Amine ELATTLLATI</span>
                             <span className='text-gray-600'>@Amine . 2m</span>
                             <img className='ml-2 w-5 h-5' src='' alt='' />
+                        </div>
+                        <div>
+                        <Button
+                        id="basic-button"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                    >
+                        <MoreHorizIcon />
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleDeleteTweet}>Delete</MenuItem>
+                    </Menu>
                         </div>
                     </div>
                 </div>
